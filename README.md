@@ -15,3 +15,12 @@ Bootstrap database:
 Run it on 3000 port:
 
     bundle exec rails s
+
+
+Demo
+----
+http://netspire.heroku.com
+
+username: admin
+
+password: secret
