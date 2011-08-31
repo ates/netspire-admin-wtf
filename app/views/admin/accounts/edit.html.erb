@@ -1,0 +1,15 @@
+<% content_for :sidebar do %>
+    <h5><%= link_to 'Create an account', new_admin_account_path %></h5>
+    <h5><%= link_to 'List of accounts', admin_accounts_path %></h5>
+<% end %>
+
+<h1>Editing account</h1>
+
+<%= form_for([:admin, @account]) do |f| -%>
+    <%= render "shared/error_messages", :target => @account %>
+    <%= render :partial => "form", :object => f %>
+    <div class="actions">
+        <%= f.submit 'Update account', :class => "btn primary" %>
+        <%= link_to("Delete account", admin_account_path(@account), "data-method" => "delete", "data-confirm" => "Are you sure to delete this record?") %>
+    </div>
+<% end -%>

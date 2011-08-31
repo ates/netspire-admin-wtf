@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Netspire control panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="Robots" content="noindex, nofollow"/>
+        <%= csrf_meta_tag %>
+        <%= stylesheet_link_tag "bootstrap-1.1.0", "admin" %>
+        <%= javascript_include_tag "jquery-1.6.2.min", "jquery.tablesorter", "rails", "application" %>
+    </head>
+    <body>
+
+        <div class="topbar-wrapper" style="z-index: 5;">
+            <div class="topbar">
+                <div class="fill">
+                    <div class="container">
+                        <h3><%= link_to('Netspire control panel', admin_dashboard_path) %></h3>
+                        <ul>
+                            <li><%= link_to('Accounts', admin_accounts_path) %></li>
+                        </ul>
+
+                        <ul class="nav">
+                            <li class="menu">
+
+                            <a href="#" class="menu">Settings</a>
+
+                            <ul class="menu-dropdown">
+                                <li><%= link_to('RADIUS Replies', admin_radius_replies_path) %></li>
+                            </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="nav">
+                            <li class="menu">
+
+                            <a href="#" class="menu">Services</a>
+
+
+                            <ul class="menu-dropdown">
+                                <li><%= link_to("IPTraffic", admin_iptraffic_sessions_path) %></li>
+                                <li><%= link_to("VoIP", "#") %></li>
+                            </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="nav secondary-nav">
+                            <li class="menu">
+
+                            <a href="#" class="menu">Actions</a>
+
+                            <ul class="menu-dropdown">
+                                <li><a href="#">Action 1</a></li>
+                                <li><a href="#">Action 2</a></li>
+                                <li class="divider"></li>
+                                <li><%= link_to("Sign out", destroy_admin_session_path) %></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div> <!-- container -->
+                </div> <!-- fill -->
+            </div> <!-- topbar -->
+        </div> <!-- topbar-wrapper -->
+
+        <% flash.each do |key, value| %>
+            <strong><%= content_tag(:div, value,
+                                    :style => "text-align: center; padding-top: 40px; position: absolute; width: 100%",
+                                    :id => "flash_",
+                                    :class => "alert-message #{key}") %></strong>
+        <% end %>
+
+        <div class="container-fluid" style="padding-top: 70px;">
+            <div class="sidebar">
+                <%= yield :sidebar %>
+            </div>
+            <div class="content">
+                <%= yield %>
+            </div>
+        </div>
+
+    </body>
+</html>

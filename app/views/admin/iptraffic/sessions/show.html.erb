@@ -1,0 +1,50 @@
+<% content_for :sidebar do %>
+    <h5><%= link_to 'List of sessions', admin_iptraffic_sessions_path %></h5>
+<% end %>
+
+<h1>Iptraffic session details</h1>
+
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Account</div>
+    <div class="span8 columns"><%= link_to(@session.account.login, edit_admin_account_path(@session.account)) %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Statust</div>
+    <div class="span8 columns"><%= session_status(@session) %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">IP address</div>
+    <div class="span8 columns"><%= @session.ip %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Amount</div>
+    <div class="span8 columns"><%= @session.amount %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Octets in</div>
+    <div class="span8 columns"><%= humanize_octets(@session.octets_in) %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Octets out</div>
+    <div class="span8 columns"><%= humanize_octets(@session.octets_out) %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Duration</div>
+    <div class="span8 columns"><%= session_duration(@session) %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Started</div>
+    <div class="span8 columns"><%= localized_time(@session.started_at, :long) %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Updated</div>
+    <div class="span8 columns"><%= localized_time(@session.updated_at, :long) %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Finished</div>
+    <div class="span8 columns"><%= localized_time(@session.finished_at, :long) %></div>
+</div>
+<div class="row show-grid" title="Half and half">
+    <div class="span8 columns">Session ID on NAS</div>
+    <div class="span8 columns"><%= @session.sid %></div>
+</div>

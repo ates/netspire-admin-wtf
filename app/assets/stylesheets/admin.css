@@ -1,0 +1,44 @@
+/* Color spans */
+
+span.colorized {
+    padding: 3px;
+    border: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+span.green {
+    color: #333;
+    background: #93eeaa;
+}
+
+span.red {
+    color: #fff;
+    background: #ff4848;
+}
+
+span.blue {
+    color: #333;
+    background: #99e0ff;
+}
+
+/* Proplist */
+
+table.proplist {
+  border-bottom: 2px solid #c1dad7;
+  float: left;
+}
+
+table.proplist tbody th {
+    font-weight: bold;
+    background: #fff;
+    text-align: right;
+}
+
+table.proplist tbody tr:nth-child(odd) th {
+    background: #f5fafa;
+}
+
+table.proplist tbody td {
+    background: #fff;
+}

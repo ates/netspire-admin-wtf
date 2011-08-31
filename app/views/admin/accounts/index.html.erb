@@ -1,0 +1,30 @@
+<% content_for :sidebar do %>
+    <h5><%= link_to 'Create an account', new_admin_account_path %></h5>
+<% end %>
+
+<script >
+    $(function() {
+        $("table#accountsTable").tablesorter({ sortList: [[0,0]] });
+    });
+</script>
+
+<table class="zebra-striped" id="accountsTable">
+    <thead>
+        <tr>
+            <th class="yellow header headerSortDown">Login</th>
+            <th class="blue header">Balance</th>
+            <th class="green header">Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @accounts.each do |account| %>
+            <tr>
+                <td><%= link_to account.login, edit_admin_account_path(account) %></td>
+                <td><%= account.balance %></td>
+                <td><%= account.active %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+          
+<%= will_paginate(@accounts) %>

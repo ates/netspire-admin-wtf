@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Netspire control panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="Robots" content="noindex, nofollow"/>
+        <%= stylesheet_link_tag "bootstrap-1.1.0", "login" %>
+    </head>
+    <body>
+        <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, :class => "alert-message error",
+                            :style => "text-align: center; padding-top: 20px;") %>
+            <% end %>
+
+        <div id="main">
+            <div id="form">
+                <%= yield %>
+            </div>
+        </div>
+    </body>
+</html>

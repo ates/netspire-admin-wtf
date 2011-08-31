@@ -1,0 +1,34 @@
+<% content_for :sidebar do %>
+    <h5><%= link_to 'Create RADIUS reply', new_admin_radius_reply_path %></h5>
+<% end %>
+
+<script >
+    $(function() {
+        $("table#radiusRepliesTable").tablesorter({ sortList: [[0,0]] });
+    });
+</script>
+
+<table class="zebra-striped" id="radiusRepliesTable">
+    <thead>
+        <tr>
+            <th class="yellow header headerSortDown">Name</th>
+            <th class="blue header">Active</th>
+            <th class="green header">Description</th>
+            <th class="green header">Created</th>
+            <th class="green header">Modified</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @radius_replies.each do |radius_reply| %>
+            <tr>
+                <td><%= link_to(radius_reply.name, edit_admin_radius_reply_path(radius_reply)) %></td>
+                <td><%= tick_or_cross(radius_reply.active) %></td>
+                <td><%= truncate(radius_reply.description, :length => 50) %></td>
+                <td><%= l(radius_reply.created_at, :format => :short) %></td>
+                <td><%= l(radius_reply.updated_at, :format => :short) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+          
+<%= will_paginate(@radius_replies) %>

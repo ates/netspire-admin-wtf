@@ -1,0 +1,14 @@
+<% content_for :sidebar do %>
+    <h5><%= link_to 'List of RADIUS replies', admin_radius_replies_path %></h5>
+<% end %>
+
+<h1>New RADIUS reply</h1>
+
+<%= form_for([:admin, @radius_reply]) do |f| -%>
+    <%= render "shared/error_messages", :target => @radius_reply %>
+    <%= render :partial => "form", :object => f %>
+    <div class="actions">
+        <%= f.submit 'Create RADIUS reply', :class => "btn primary" %>
+        <%= f.submit 'Reset', :type => "reset", :class => "btn" %>
+    </div>
+<% end -%>
