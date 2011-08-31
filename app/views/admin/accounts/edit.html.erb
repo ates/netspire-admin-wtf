@@ -5,6 +5,12 @@
 
 <h1>Editing account</h1>
 
+<ul class="tabs">
+    <li class="active"><a href="#">Profile</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Payments</a></li>
+</ul>
+
 <%= form_for([:admin, @account]) do |f| -%>
     <%= render "shared/error_messages", :target => @account %>
     <%= render :partial => "form", :object => f %>

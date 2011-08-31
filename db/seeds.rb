@@ -14,3 +14,12 @@ radius_reply5 = RadiusReply.create!(:name => "Netspire-Framed-Pool", :descriptio
 radius_reply6 = RadiusReply.create!(:name => "Netspire-Upstream-Speed-Limit", :description => "This attribute indicates the UpStream speed limit")
 radius_reply7 = RadiusReply.create!(:name => "Netspire-Downstream-Speed-Limit", :description => "This attribute indicates the DownStream speed limit")
 radius_reply8 = RadiusReply.create!(:name => "Netspire-Allowed-NAS", :description => "This attribute indicates the NAS identifier to which the user may connect")
+
+a1 = Account.create!(:contract => "1111111111111", :login => "michelle", :password => "secret")
+a1.deposit(3000)
+
+a2 = Account.create!(:contract => "2222222222222", :login => "tricia", :password => "secret")
+a2.deposit(7000)
+
+a3 = Account.create!(:contract => "3333333333333", :login => "joel", :password => "secret")
+a3.deposit(2500)

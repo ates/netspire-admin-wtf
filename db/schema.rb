@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110829205610) do
+ActiveRecord::Schema.define(:version => 20110830144701) do
 
   create_table "accounts", :force => true do |t|
     t.string   "contract",                                                     :null => false
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(:version => 20110829205610) do
     t.integer  "account_id",                                                                 :null => false
     t.string   "sid",         :limit => 64,                                                  :null => false
     t.string   "ip"
-    t.integer  "octets_in",                                                 :default => 0,   :null => false
-    t.integer  "octets_out",                                                :default => 0,   :null => false
+    t.integer  "octets_in",   :limit => 8,                                  :default => 0,   :null => false
+    t.integer  "octets_out",  :limit => 8,                                  :default => 0,   :null => false
     t.decimal  "amount",                    :precision => 20, :scale => 10, :default => 0.0, :null => false
     t.datetime "started_at",                                                                 :null => false
     t.datetime "finished_at"
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(:version => 20110829205610) do
     t.string   "title",                         :null => false
     t.text     "description"
     t.boolean  "active",      :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "account_id",                                :null => false
+    t.decimal  "amount",     :precision => 12, :scale => 2, :null => false
+    t.integer  "code",                                      :null => false
+    t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

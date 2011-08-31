@@ -11,6 +11,7 @@ NetspireAdmin::Application.routes.draw do
         match "/dashboard", :to => "dashboard#index", :as => :dashboard
 
         resources :accounts
+        resources :transactions
 
         scope("/settings") do
             resources :radius_replies
