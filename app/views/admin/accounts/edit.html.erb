@@ -3,19 +3,25 @@
     <h5><%= link_to 'List of accounts', admin_accounts_path %></h5>
 <% end %>
 
+<% content_for :html_head do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+                $('ul#tabs li').click(function() {
+                $('ul#tabs li').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+<% end %>
+
 <h1>Editing account</h1>
 
-<ul class="tabs">
-    <li class="active"><a href="#">Profile</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Payments</a></li>
+<ul class="tabs" id="tabs">
+    <li class="active"><%= link_to "Profile", edit_admin_account_path(@account), :remote => true %></li>
+    <li><%= link_to "Services", "#" %></li>
+    <li><%= link_to "Payments", admin_transactions_path(:a => @account), :remote => true %></li>
 </ul>
 
-<%= form_for([:admin, @account]) do |f| -%>
-    <%= render "shared/error_messages", :target => @account %>
-    <%= render :partial => "form", :object => f %>
-    <div class="actions">
-        <%= f.submit 'Update account', :class => "btn primary" %>
-        <%= link_to("Delete account", admin_account_path(@account), "data-method" => "delete", "data-confirm" => "Are you sure to delete this record?") %>
-    </div>
-<% end -%>
+<div id="results">
+    <%= render :partial => "edit" %>
+</div>

@@ -1,0 +1,32 @@
+<script >
+    $(function() {
+        $("table#transactionsTable").tablesorter({ sortList: [[0,0]] });
+    });
+</script>
+
+<table class="zebra-striped" id="transactionsTable">
+    <thead>
+        <tr>
+            <th class="yellow header headerSortDown">From/To</th>
+            <th class="blue header">Type</th>
+            <th class="green header">Amount</th>
+            <th class="green header">Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @transanctions.each do |t| %>
+            <tr>
+                <td><%= link_to t.account.login, polymorphic_path([:edit, :admin, t.account]) %></td>
+                <td><%= transaction_type(t) %></td>
+                <td><%= t.amount %></td>
+                <td><%= localized_time(t.created_at) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $('.pagination a').attr('data-remote', 'true');
+</script>
+
+<%= will_paginate(@transanctions) %>

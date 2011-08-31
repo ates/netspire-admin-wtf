@@ -1,0 +1,8 @@
+<%= form_for([:admin, @account]) do |f| -%>
+    <%= render "shared/error_messages", :target => @account %>
+    <%= render :partial => "form", :object => f %>
+    <div class="actions">
+        <%= f.submit 'Update account', :class => "btn primary" %>
+        <%= link_to("Delete account", admin_account_path(@account), "data-method" => "delete", "data-confirm" => "Are you sure to delete this record?") %>
+    </div>
+<% end -%>
