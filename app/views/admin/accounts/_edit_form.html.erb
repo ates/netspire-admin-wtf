@@ -1,0 +1,36 @@
+<div class="clearfix">
+    <%= edit_form.label :contract %>
+    <div class="input">
+        <%= edit_form.text_field :contract, :size => 30 %>
+    </div>
+</div>
+
+<div class="clearfix">
+    <%= edit_form.label :login %>
+    <div class="input">
+        <%= edit_form.text_field :login, :size => 30 %>
+    </div>
+</div>
+
+<div class="clearfix">
+    <%= edit_form.label :password %>
+    <div class="input">
+        <%= edit_form.text_field :password, :id => "password_field", :disabled => true %>
+        <%= link_to "Edit password", "#", :id => "password_enable" %>
+    </div>
+</div>
+
+<div class="clearfix">
+    <%= edit_form.label :balance %>
+    <div class="input">
+        <%= edit_form.text_field :balance, :size => 10 %>
+    </div>
+</div>
+
+<div class="clearfix">
+    <%= edit_form.label :active %>
+    <div class="input">
+        <%= edit_form.check_box :active %>
+        <span>Yes, serve this account</span>
+    </div>
+</div>

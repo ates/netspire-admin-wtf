@@ -7,9 +7,12 @@
     <script type="text/javascript">
         $(document).ready(function() {
                 $('ul#tabs li').click(function() {
-                $('ul#tabs li').removeClass('active');
-                $(this).addClass('active');
-            });
+                    $('ul#tabs li').removeClass('active');
+                    $(this).addClass('active');
+                });
+                $('#password_enable').click(function() {
+                    $('#password_field').removeAttr("disabled");
+                });
         });
     </script>
 <% end %>
