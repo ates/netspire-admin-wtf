@@ -26,3 +26,7 @@ a3.deposit(2500)
 
 radius_reply_group1 = RadiusReplyGroup.create(:name => "Default")
 radius_reply_group2 = RadiusReplyGroup.create(:name => "Alternate")
+
+plan1 = Plan.create!(:name => "Awesome Ultimate", :code => "Ultimate")
+plan2 = Plan.create!(:name => "Nightly Geek", :code => "Nightly")
+plan3 = Plan.create!(:name => "Till Daylight Dies", :code => "Daylight")

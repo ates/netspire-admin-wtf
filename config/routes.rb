@@ -13,6 +13,10 @@ NetspireAdmin::Application.routes.draw do
         resources :accounts
         resources :transactions
 
+        scope("/billing") do
+            resources :plans
+        end
+
         scope("/settings") do
             resources :radius_replies
             resources :radius_reply_groups
