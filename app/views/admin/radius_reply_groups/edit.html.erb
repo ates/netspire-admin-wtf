@@ -1,0 +1,64 @@
+<% content_for :html_head do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Appends new RadiusReply row
+            $('#new_radius_reply').click(function() {
+                var tbody = $("#radius_replies");
+                var row = $.templates.get("replies");
+                row.appendTo(tbody).show();
+            });
+
+            // Remove existing RadiusReply row
+            $('#radius_replies a.remove').live("click", function() {
+                $(this).closest('tr').remove();
+            });
+
+            $("form").submit(function() {
+                var rows = $("#radius_replies tr");
+                $.each(rows, function() {
+                    var index = rows.index($(this));
+                    $.each($(this).find("input, select"), function() {
+                        var name = $(this).attr("name")
+                        $(this).attr("name", name.replace("NEW_ROW", index));
+                    });
+                });
+            });
+        });
+    </script>
+<% end %>
+
+<% content_for :sidebar do %>
+    <h5><%= link_to 'Create RADIUS reply group', new_admin_radius_reply_group_path %></h5>
+    <h5><%= link_to 'List of RADIUS reply groups', admin_radius_reply_groups_path %></h5>
+<% end %>
+
+<h1>Editing RADIUS reply group</h1>
+
+<%= form_for([:admin, @radius_reply_group]) do |f| -%>
+<%= render :partial => "form", :object => f %>
+
+<h2>RADIUS replies</h2>
+
+<table class="zebra-striped" id="radius_replies_list">
+    <thead>
+        <tr>
+            <th class="yellow header">Name</th>
+            <th class="blue header">Value</th>
+            <th>&#x2718;</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="3"><a href="#" id="new_radius_reply">Add new</a></td>
+        </tr>
+    </tfoot>
+    <tbody id="radius_replies">
+        <%= radius_replies_fields(f) %>
+        <%= radius_reply_row_template(f) %>
+    </tbody>
+</table>
+<div class="actions">
+    <%= f.submit "Update RADIUS group" , :class => "btn primary" %>
+    <%= link_to("Delete RADIUS group", admin_radius_reply_group_path(@radius_reply_group), "data-method" => "delete", "data-confirm" => "Are you sure to delete this record?") %>
+<% end -%>
+</div>

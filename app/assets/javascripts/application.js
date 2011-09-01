@@ -3,6 +3,9 @@
 
 $(document).ready(function(){
 
+    // Init template elements
+    $.templates.init();
+
     // Dropdown menu
     $("body").bind("click", function (e) {
         $('a.menu').parent("li").removeClass("open");
@@ -15,4 +18,5 @@ $(document).ready(function(){
 
     // fadeout flash messages
     $("div#[id^='flash_']").fadeOut(3000);
+
 });

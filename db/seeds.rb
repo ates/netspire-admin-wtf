@@ -23,3 +23,6 @@ a2.deposit(7000)
 
 a3 = Account.create!(:contract => "3333333333333", :login => "joel", :password => "secret")
 a3.deposit(2500)
+
+radius_reply_group1 = RadiusReplyGroup.create(:name => "Default")
+radius_reply_group2 = RadiusReplyGroup.create(:name => "Alternate")

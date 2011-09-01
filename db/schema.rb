@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830144701) do
+ActiveRecord::Schema.define(:version => 20110831134033) do
 
   create_table "accounts", :force => true do |t|
     t.string   "contract",                                                     :null => false
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(:version => 20110830144701) do
     t.datetime "updated_at"
   end
 
+  create_table "assigned_radius_reply_groups", :force => true do |t|
+    t.integer  "target_id",             :null => false
+    t.integer  "radius_reply_group_id", :null => false
+    t.string   "target_type",           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "iptraffic_sessions", :force => true do |t|
     t.integer  "account_id",                                                                 :null => false
     t.string   "sid",         :limit => 64,                                                  :null => false
@@ -63,6 +71,14 @@ ActiveRecord::Schema.define(:version => 20110830144701) do
 
   create_table "radius_replies", :force => true do |t|
     t.string   "name"
+    t.text     "description"
+    t.boolean  "active",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "radius_reply_groups", :force => true do |t|
+    t.string   "name",                          :null => false
     t.text     "description"
     t.boolean  "active",      :default => true
     t.datetime "created_at"
